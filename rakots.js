@@ -1,109 +1,49 @@
-function createObject( element, tag, id, src, text){
+function createObject( element, tag, id, textContent, src){
     var element = document.createElement(tag)
-    element.id = id
+    element.setAttribute("id", id)
+    element.textContent = textContent
     element.setAttribute("src", src)
-    element.textContent = text
     document.body.appendChild(element)
 }
-
-
-function createInteractive(){
-    createObject( "title2", "h1", "title2", "", "Members")
-
-
-    createObject( "mbopict", "img", "mbopict", "mbola.jpg")
-    createObject( "dompict", "img", "dompict", "domoina.jpg")
-    createObject( "hanapict", "img", "hanapict", "hanatia.jpg")
-    createObject( "kaspict", "img", "kaspict", "kasi.jpg")
-    createObject( "manpict", "img", "manpict", "manoa.jpg")
-    createObject( "mitpict", "img", "mitpict", "mitantana.jpg")
-    createObject( "ilopict", "img", "ilopict", "ilo.jpg")
-
-    createObject( "father", "h2", "father", "", "Mbola")
-    createObject( "mother", "h2", "mother", "", "Domoina")
-    createObject( "daughter", "h2", "daughter", "", "Hanatia")
-    createObject( "son1", "h2", "son1", "", "Kasi")
-    createObject( "son2", "h2", "son2", "", "Manoa")
-    createObject( "son3", "h2", "son3", "", "Mitantana")
-    createObject( "cousin", "h2", "cousin", "", "We consider our little cousin ilo as a member of the family")
-    
-    createObject( "textReturn", "button", "textReturn", "", "Return")
-
-    textReturn.addEventListener("mouseover", function(){
-        textReturn.style.backgroundColor = "white";
-        textReturn.style.color = "#41B77F";
-    })
-    textReturn.addEventListener("mouseout", function(){
-        textReturn.style.backgroundColor = "#41B77F";
-        textReturn.style.color = "white";
-    }) 
-}
-
-
-function removeSecondPage(){
-    document.body.removeChild(textReturn)
-    document.body.removeChild(father)
-    document.body.removeChild(mother)
-    document.body.removeChild(daughter)
-    document.body.removeChild(son1)
-    document.body.removeChild(son2)
-    document.body.removeChild(son3)
-    document.body.removeChild(mbopict)
-    document.body.removeChild(dompict)
-    document.body.removeChild(hanapict)
-    document.body.removeChild(kaspict)
-    document.body.removeChild(manpict)
-    document.body.removeChild(mitpict)
-    document.body.removeChild(title2)
-    document.body.removeChild(cousin)
-    document.body.removeChild(ilopict)
-}
-
-
-function imageEventListener(image){
-    image.addEventListener("mouseover", function(){
-        image.style.borderColor = "#41B77F"
-    })
-    image.addEventListener("mouseout", function(){
-        image.style.borderColor = "white"
+function interactiveMode(element){
+    element.addEventListener("mouseover", function(){
+        element.style.color = rgb(48, 115, 204)
+        element.style.animationName = "interactive"
+        element.style.animationDuration = "0.6s"
+        element.style.animationIterationCount = "1"
     })
 }
+var counter1 = 0
 
+var line1 = document.getElementById("line1")
+var familyimg = document.getElementById("familyimg")
 
-var title = document.getElementById("title")
-var member = document.getElementById("member");
-var text1 = document.getElementById("text1");
+line1.addEventListener("mouseover", function(){
+    if(counter1 < 1){
+        createObject( "mariage", "img", "mariage", "", "mariage.jpg")   
+        createObject( "title2", "h1", "title2", "Ny fiandohany")
+        createObject( "text3", "h1", "text3", "Ny fianakaviana Razafindrakoto")
+        createObject("text31", "h1", "text31", "dia nanomboka tamin'i Mbola sy Domoina")   
+        createObject( "text4", "h1", "text4", "Izy ireo no nampisy ny mpandimbin'ny") 
+        createObject( "text41", "h1", "text41", "taranaka Razafindrakoto mbola hitohy ")
+        createObject("line2", "div", "line2")
 
-member.addEventListener("mouseover", function(){
-    member.style.backgroundColor = "white";
-    text1.style.color = "#41B77F";
+        var counter2 = 0
+        line2.addEventListener("mouseover", function(){
+            if(counter2 < 1){
+                createObject( "title3", "h1", "title3", "Ireo tenin'andriamanitra tianay")
+                createObject( "mbopict", "img", "mbopict", "", "mbola.jpg")
+                createObject( "dompict", "img", "dompict", "", "domoina.jpg")
+                createObject( "hanapict", "img", "hanapict", "", "hanatia.jpg")
+                createObject( "kasipict", "img", "kasipict", "", "kasi.jpg")
+                createObject( "manpict", "img", "manpict", "", "manoa.jpg")
+                createObject( "mitapict", "img", "mitapict", "", "mitantana.jpg")
+                createObject( "text5", "h1", "text5", "Zay aloha ny androany")
+                counter2++
+            }
+        })
+        counter1++
+    }
 })
 
-member.addEventListener("mouseout", function(){
-    member.style.backgroundColor = "#41B77F";
-    text1.style.color = "white";
-})
-
-member.addEventListener("click", function(){
-
-    createInteractive()
-    member.style.display = "none"
-    text1.style.display = "none"
-    title.style.display = "none"
-
-    imageEventListener(mbopict)
-    imageEventListener(dompict)
-    imageEventListener(hanapict)
-    imageEventListener(kaspict)
-    imageEventListener(manpict)
-    imageEventListener(mitpict)
-    imageEventListener(ilopict)
-    
-    textReturn.addEventListener("click", function(){
-        removeSecondPage()
-        title.style.display = "block"
-        member.style.display = "block"
-        text1.style.display = "block"
-    })
-})
   
